@@ -65,4 +65,71 @@ const sendEmail = (e) => {
 
 contactForm.addEventListener('submit', sendEmail);
 
+/*========== Home Matrix Rain ==========*/
+const homeRainCanvas = document.getElementById('home-rain');
+
+if (homeRainCanvas) {
+    const homeSection = document.getElementById('home');
+    const rainCtx = homeRainCanvas.getContext('2d');
+    const rainChars = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ!@#$%^&*';
+    const fontSize = 15;
+    const columnDrawChance = 0.45; // lower = fewer columns appear each frame
+    let columns = 0;
+    let drops = [];
+    let rainTimer = null;
+
+    const setupRain = () => {
+        const sectionWidth = homeSection.clientWidth;
+        const sectionHeight = homeSection.clientHeight;
+
+        homeRainCanvas.width = sectionWidth;
+        homeRainCanvas.height = sectionHeight;
+
+        columns = Math.max(1, Math.floor(sectionWidth / fontSize));
+        drops = Array.from({ length: columns }, () => {
+            return Math.floor(Math.random() * -40);
+        });
+    };
+
+    const drawRain = () => {
+        rainCtx.fillStyle = 'rgba(0, 0, 0, 0.08)';
+        rainCtx.fillRect(0, 0, homeRainCanvas.width, homeRainCanvas.height);
+
+        rainCtx.font = `${fontSize}px "Roboto Mono", monospace`;
+        rainCtx.fillStyle = 'rgba(255, 255, 255, 0.35)';
+
+        for (let i = 0; i < drops.length; i += 1) {
+            if (Math.random() > columnDrawChance) continue;
+
+            const x = i * fontSize;
+            const y = drops[i] * fontSize;
+            const char = rainChars[Math.floor(Math.random() * rainChars.length)];
+
+            rainCtx.fillText(char, x, y);
+
+            if (y > homeRainCanvas.height && Math.random() > 0.975) {
+                drops[i] = Math.floor(Math.random() * -40);
+            } else {
+                drops[i] += 1;
+            }
+        }
+    };
+
+    setupRain();
+    rainTimer = setInterval(drawRain, 55);
+    window.addEventListener('resize', setupRain);
+
+    document.addEventListener('visibilitychange', () => {
+        if (document.hidden) {
+            clearInterval(rainTimer);
+            rainTimer = null;
+            return;
+        }
+
+        if (!rainTimer) {
+            rainTimer = setInterval(drawRain, 55);
+        }
+    });
+}
+
 

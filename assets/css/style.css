@@ -41,6 +41,7 @@
 
 html {
     scroll-behavior: smooth;
+    zoom: 0.8;
 }
 
 body,
@@ -226,14 +227,20 @@ input {
     background: var(--linear-gradient);
 }
 
+.home__rain {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+    pointer-events: none;
+}
+
 .home__container {
     grid-template-columns: 4fr 8fr;
-    column-gap: 1.875 rem;
-}
-.home__img,
-.home__data {
+    column-gap: 1.875rem;
+    position: relative;
     z-index: 10;
-
 }
 
 .home__img {
@@ -550,8 +557,8 @@ input {
 .project__link {
     float: right;
     margin-top: 3.9em;
-    color: vat(--primary-color);
-    font-weight: var(--roboto-mono-font);
+    color: var(--primary-color);
+    font-family: var(--roboto-mono-font);
 }
 
 .project__link:hover {
@@ -776,6 +783,12 @@ input {
 
 .contact__social-link {
     font-family: var(--roboto-mono-font);
+    opacity: 1;
+    transition: 0.3s;
+}
+
+.contact__social-link:hover {
+    opacity: 0.5;
 }
 
 .contact__form {

@@ -562,7 +562,7 @@ input {
 }
 
 .project__link:hover {
-    color: var(--primary-color);
+    opacity: 0.5;
 }
 
 /*================= Testimonials ===============*/

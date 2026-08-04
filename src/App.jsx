@@ -1,55 +1,50 @@
-import React, { useState, useEffect } from 'react';
-import Navbar from './components/Navbar';
-import Hero from './components/Hero';
-import About from './components/About';
-import Services from './components/Services';
-import Resume from './components/Resume';
-import Skills from './components/Skills';
-import Projects from './components/Projects';
-import Testimonials from './components/Testimonials';
-import Blog from './components/Blog';
-import Contact from './components/Contact';
-import Footer from './components/Footer';
+import React from "react";
+import { SmoothScroll } from "./components/portfolio/SmoothScroll";
+import { CustomCursor } from "./components/portfolio/CustomCursor";
+import { Hero } from "./components/portfolio/Hero";
+import { TerminalBio } from "./components/portfolio/TerminalBio";
+import { Projects } from "./components/portfolio/Projects";
+import { SkillsMarquee } from "./components/portfolio/SkillsMarquee";
+import { Timeline } from "./components/portfolio/Timeline";
+import { Contact } from "./components/portfolio/Contact";
+
+const NAV = [
+  { label: "About", href: "#about" },
+  { label: "Work", href: "#projects" },
+  { label: "Stack", href: "#stack" },
+  { label: "Experience", href: "#experience" },
+  { label: "Contact", href: "#contact" },
+];
 
 export default function App() {
-  const [theme, setTheme] = useState(() => {
-    if (typeof window !== 'undefined') {
-      const savedTheme = localStorage.getItem('theme');
-      if (savedTheme) return savedTheme;
-      return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'dark';
-    }
-    return 'dark';
-  });
-
-  useEffect(() => {
-    const root = document.documentElement;
-    if (theme === 'dark') {
-      root.classList.add('dark');
-    } else {
-      root.classList.remove('dark');
-    }
-    localStorage.setItem('theme', theme);
-  }, [theme]);
-
-  const toggleTheme = () => {
-    setTheme((prevTheme) => (prevTheme === 'dark' ? 'light' : 'dark'));
-  };
-
   return (
-    <div className="min-h-screen bg-[var(--bg-primary)] text-[var(--text-primary)] transition-colors duration-300">
-      <Navbar theme={theme} toggleTheme={toggleTheme} />
+    <div className="min-h-screen bg-background text-foreground selection:bg-terminal selection:text-background">
+      <SmoothScroll />
+      <CustomCursor />
+
+      {/* Header Navigation */}
+      <header className="fixed inset-x-0 top-0 z-50 grid grid-cols-[minmax(0,1fr)_auto] items-center gap-4 border-b border-border bg-background/80 px-5 py-4 backdrop-blur sm:px-10">
+        <a href="#hero" className="min-w-0 truncate font-display font-bold uppercase tracking-tight text-foreground hover:text-terminal transition-colors">
+          THINH NGUYEN DUC<span className="text-terminal">.</span>
+        </a>
+        <nav className="flex shrink-0 gap-5 font-mono text-[11px] uppercase tracking-[0.2em]">
+          {NAV.map((n) => (
+            <a key={n.href} href={n.href} className="hover:text-terminal transition-colors">
+              {n.label}
+            </a>
+          ))}
+        </nav>
+      </header>
+
+      {/* Main Sections */}
       <main>
         <Hero />
-        <About />
-        <Services />
-        <Resume />
-        <Skills />
+        <TerminalBio />
         <Projects />
-        <Testimonials />
-        <Blog />
+        <SkillsMarquee />
+        <Timeline />
         <Contact />
       </main>
-      <Footer />
     </div>
   );
 }

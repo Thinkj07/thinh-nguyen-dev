@@ -11,17 +11,22 @@
   },
   "dependencies": {
     "@emailjs/browser": "^4.4.1",
-    "framer-motion": "^12.4.10",
+    "clsx": "^2.1.1",
+    "lenis": "^1.3.25",
     "lucide-react": "^0.475.0",
+    "motion": "^12.43.0",
     "react": "^18.3.1",
-    "react-dom": "^18.3.1"
+    "react-dom": "^18.3.1",
+    "tailwind-merge": "^3.5.0"
   },
   "devDependencies": {
-    "@tailwindcss/vite": "^4.3.3",
+    "@tailwindcss/vite": "^4.0.0",
+    "@types/node": "^22.10.0",
     "@types/react": "^18.3.18",
     "@types/react-dom": "^18.3.5",
     "@vitejs/plugin-react": "^4.3.4",
-    "tailwindcss": "^4.3.3",
+    "tailwindcss": "^4.0.0",
+    "tw-animate-css": "^1.3.4",
     "vite": "^6.1.0"
   }
 }

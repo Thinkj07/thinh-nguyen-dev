@@ -1,37 +1,38 @@
-# Thinh Nguyen Duc - Personal Portfolio Website (React + Vite)
+# Thinh Nguyen Duc - Mono-Type Masterpiece Portfolio
 
-A modern, high-performance, responsive portfolio web application for **Thinh Nguyen Duc** built with **React 18**, **Vite**, **Framer Motion**, and **Lucide Icons**, featuring a sleek **Monochrome (Black & White)** aesthetic with **Light/Dark Mode** support and seamless **Vercel** deployment.
+A brutalist-minimalist, high-contrast, high-performance portfolio web application for **Thinh Nguyen Duc**, built using the **Mono-Type Masterpiece** architecture baseline (**React 18**, **Vite**, **Motion/Framer Motion**, **Lenis Smooth Scroll**, **Space Grotesk + JetBrains Mono** fonts, and **Tailwind CSS v4**).
 
 ---
 
 ## ⚡ Features & Technology Stack
 
-### Tech Stack
-- **Framework & Core**: React 18 + Vite
-- **UI & Animations**: Framer Motion (page reveals, tab transitions, interactive modals)
-- **Icons**: Lucide React
-- **Theme System**: Custom Monochrome Light / Dark mode toggle (stored in `localStorage`)
-- **Background**: Interactive HTML5 Canvas Matrix/Particle Rain effect
-- **Form & Mail**: EmailJS integration for serverless contact messages
+### Tech Stack & Architecture Baseline
+- **Design System Baseline**: Ported from `mono-type-masterpiece` (Brutalist Terminal Aesthetics, OKLCH monochrome palette, 0px sharp borders, grid-bg ambient pattern)
+- **Framework & Build**: React 18 + Vite
+- **Smooth Scrolling**: Lenis (`lenis`) for fluid inertia wheel scroll
+- **Physics Custom Cursor**: Motion spring-based custom terminal cursor
+- **Animations & Layout**: Motion (`motion/react`) with spring physics & gesture feedback
+- **Typography**: Space Grotesk (Display headers), JetBrains Mono (Terminal & Code), Inter (Body)
+- **Deploy**: Vercel SPA continuous deployment (`vercel.json`)
 
-### Highlight Sections
-1. **Hero & Interactive Canvas**: Live status badge, profile avatar, key specs grid, quick CV download.
-2. **About Me**: Academic background at Ho Chi Minh City University of Technology and core focus areas.
-3. **Services**: Interactive service cards for Full-Stack Development, Frontend Development, and AI & Game Development.
-4. **Resume & Timeline**: Clean academic timeline layout.
-5. **Skills Meter**: Animated skill bars for Frontend and Backend/AI systems.
-6. **Work & Projects**: Filterable project gallery (`All`, `Full-Stack`, `Frontend`, `AI & Game`) with GitHub links and detail modals.
-7. **Quotes & Testimonials**: Quote carousel featuring insights from tech leaders (Sam Altman, Demis Hassabis, Linus Torvalds).
-8. **Latest Blog**: Tech articles grid with article reader modals.
-9. **Contact & Footer**: Contact form with validation feedback and social links.
+### Sections & Interactive Components
+1. **Header Navigation**: Glassmorphism fixed header with direct section anchors (`About`, `Work`, `Stack`, `Experience`, `Contact`).
+2. **Hero (`/`)**: Parallax ambient grid background with typed line (`HI, I'M THINH NGUYEN`), glowing terminal accent blur, and role description (`CS STUDENT @ HCMUT`).
+3. **Interactive Terminal Bio (`01 / about`)**: Fully functional bash-style shell (`thinh@portfolio:~$`) supporting commands:
+   - `help` — Available command directory
+   - `skills` — Full-stack & AI technical stack breakdown
+   - `projects` — Featured builds list
+   - `contact` — Contact channels & details
+   - `whoami` — Academic background summary
+   - `clear` — Wipe screen buffer
+4. **Bento Grid Selected Builds (`02 / work`)**: High-contrast Bento grid featuring Thinh Nguyen Duc's real projects (**ITWORKS Platform**, **Personal Portfolio**, **Connect 4 AI Engine**) with hover scale effects, tech badges, and direct GitHub links.
+5. **Infinite Tech Stack Marquee (`03 / stack`)**: Interactive marquee ticker with hover pause & isolation highlighting Thinh Nguyen Duc's skills (ReactJS, Node.js, Python, Java, JavaScript, MySQL, MongoDB, Pygame & AI).
+6. **Experience & Education (`04 / experience & education`)**: Interactive accordion timeline highlighting Computer Science studies at HCMUT, ITWORKS project lead, and Connect 4 AI engine development.
+7. **Interactive Contact Footer (`05 / contact`)**: High-impact typography banner, 1-click email copier with animated ASCII particle explosion, and direct links to GitHub, LinkedIn, Facebook, and Resume PDF.
 
 ---
 
 ## 🚀 Local Development Setup
-
-### Prerequisites
-- Node.js (v18.x or higher recommended)
-- npm / yarn / pnpm
 
 ### Installation
 
@@ -50,32 +51,14 @@ A modern, high-performance, responsive portfolio web application for **Thinh Ngu
    npm run build
    ```
 
-4. Preview the production build locally:
-   ```bash
-   npm run preview
-   ```
-
 ---
 
-## 🌐 Deploying to Vercel
+## 🌐 Deployment to Vercel
 
-This project is pre-configured with `vercel.json` and standard Vite build outputs (`dist/`).
-
-1. Push your latest code changes to your GitHub repository:
-   ```bash
-   git add .
-   git commit -m "Migrate portfolio to React + Vite with Monochrome Light/Dark UI"
-   git push origin main
-   ```
-2. Vercel will automatically detect Vite, run `npm run build`, and publish the app without changing your existing Vercel domain link.
-
----
-
-## 👤 Author
-
-**Thinh Nguyen Duc**
-- **Role**: Computer Science Student & Software Developer
-- **University**: Ho Chi Minh City University of Technology (HCMUT)
-- **GitHub**: [@Thinkj07](https://github.com/Thinkj07/)
-- **LinkedIn**: [thinkj07](https://www.linkedin.com/in/thinkj07/)
-- **Email**: cbl.thinhnguyen@gmail.com
+Push the changes to your GitHub repository:
+```bash
+git add .
+git commit -m "Rebase UI/UX and codebase to mono-type-masterpiece baseline for Thinh Nguyen Duc portfolio"
+git push origin main
+```
+Vercel will build the `dist/` bundle automatically and update your live portfolio site.

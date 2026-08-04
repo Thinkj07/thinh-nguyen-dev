@@ -1,4 +1,6 @@
-/* Base & Monochrome CSS Design System */
+@import "tailwindcss";
+
+/* Monochrome Design Tokens & Variables */
 :root {
   --bg-primary: #ffffff;
   --bg-secondary: #f4f4f5;
@@ -18,7 +20,7 @@
   --badge-bg: #18181b;
   --badge-text: #ffffff;
 
-  --grid-color: rgba(0, 0, 0, 0.03);
+  --grid-color: rgba(0, 0, 0, 0.04);
 }
 
 .dark {
@@ -40,7 +42,24 @@
   --badge-bg: #f4f4f5;
   --badge-text: #09090b;
 
-  --grid-color: rgba(255, 255, 255, 0.03);
+  --grid-color: rgba(255, 255, 255, 0.04);
+}
+
+/* Custom Utilities for Text & Backgrounds */
+.text-primary {
+  color: var(--text-primary);
+}
+
+.text-secondary {
+  color: var(--text-secondary);
+}
+
+.text-muted {
+  color: var(--text-muted);
+}
+
+.bg-surface {
+  background-color: var(--bg-primary);
 }
 
 * {
@@ -52,7 +71,6 @@
 html {
   scroll-behavior: smooth;
   font-family: 'Inter', sans-serif;
-  color-scheme: light dark;
 }
 
 body {

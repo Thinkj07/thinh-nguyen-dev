@@ -2,14 +2,14 @@ export const personalInfo = {
   name: "Thinh Nguyen Duc_",
   shortName: "Thinh Nguyen",
   role: "Computer Science Student & Full-Stack Developer",
-  bio: "I am a third-year Computer Science student at Ho Chi Minh City University of Technology, driven by a deep passion for building innovative and efficient software systems. With a solid technical foundation and hands-on experience across diverse projects, I thrive on tackling complex challenges—ranging from system-level architecture to user-facing applications and continuously seek opportunities to create impactful solutions.",
-  age: "20",
+  bio: "I am a fourth-year Computer Science student at Ho Chi Minh City University of Technology, driven by a deep passion for building innovative and efficient software systems. With a solid technical foundation and hands-on experience across diverse projects, I thrive on tackling complex challenges—ranging from system-level architecture to user-facing applications and continuously seek opportunities to create impactful solutions.",
+  age: "21",
   phone: "(84+) 394 940 599",
   email: "cbl.thinhnguyen@gmail.com",
   address: "Ta Quang Buu Street, Quarter 33, Linh Xuan, Ho Chi Minh City",
   university: "Ho Chi Minh City University of Technology",
   universityTime: "2023 - Present",
-  profileImage: "/assets/img/profile.png",
+  profileImage: "/assets/img/avatar.png",
   cvPath: "/assets/img/cv.pdf",
   socials: {
     github: "https://github.com/Thinkj07/",
@@ -47,7 +47,7 @@ export const educationData = [
     institution: "Ho Chi Minh City University of Technology",
     degree: "Bachelor of Science in Computer Science",
     period: "2023 - Present",
-    status: "3rd Year Student",
+    status: "4th Year Student",
     description: "Focusing on Software Engineering, Data Structures & Algorithms, Artificial Intelligence, Computer Networks, and System Architecture."
   }
 ];

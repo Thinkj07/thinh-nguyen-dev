@@ -51,7 +51,7 @@ export default function About() {
                 <div>
                   <h3 className="font-bold text-base text-primary">Computer Science</h3>
                   <p className="text-xs font-mono text-muted mt-0.5">HCM University of Technology</p>
-                  <p className="text-xs text-secondary mt-1">3rd Year Senior Academic Standing</p>
+                  <p className="text-xs text-secondary mt-1">4th Year Senior Academic Standing</p>
                 </div>
               </div>
 

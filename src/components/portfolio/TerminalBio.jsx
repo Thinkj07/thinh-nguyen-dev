@@ -28,7 +28,7 @@ const COMMANDS = {
     "linkedin : linkedin.com/in/thinkj07/",
   ],
   whoami: [
-    "thinh nguyen duc — 3rd year computer science student @ hcmut.",
+    "thinh nguyen duc — 4th year computer science student @ hcmut.",
     "focus: full-stack web applications, backend architecture & ai systems.",
   ],
 };

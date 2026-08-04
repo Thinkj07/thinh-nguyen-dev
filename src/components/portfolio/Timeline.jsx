@@ -7,26 +7,17 @@ const ITEMS = [
     role: "B.Sc. Computer Science Student",
     org: "Ho Chi Minh City University of Technology (HCMUT)",
     details: [
-      "3rd Year Senior Academic Standing.",
+      "4th Year Senior Academic Standing.",
       "Core focus: Software Engineering, System Architecture, Database Management, and AI Algorithms.",
     ],
   },
   {
-    year: "2025",
-    role: "Full-Stack Project Lead",
-    org: "ITWORKS Platform",
+    year: "2026",
+    role: "AWS-FCAJ intership",
+    org: "AWS-FCAJ",
     details: [
-      "Engineered end-to-end job portal with MERN stack, JWT authentication, and role-based access control.",
-      "Implemented advanced job search, application tracking system, and Admin audit logging.",
-    ],
-  },
-  {
-    year: "2024",
-    role: "AI & Game Systems Developer",
-    org: "Connect 4 AI Project",
-    details: [
-      "Built tactical 2-3 player board game engine with Python and Pygame.",
-      "Optimized Minimax and MCTS (Monte Carlo Tree Search) algorithms using Neural Networks.",
+      "Optimized large-scale cloud services and distributed systems at AWS alongside world-class engineers.",
+      "Contributed to core infrastructure features, enhancing reliability and performance for global users.",
     ],
   },
 ];

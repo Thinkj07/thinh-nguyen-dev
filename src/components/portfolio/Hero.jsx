@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { motion, useMotionValue, useSpring, useTransform } from "motion/react";
+import avatarImg from "/assets/img/avatar.png";
 
 const LINE_1 = "HI, I'M THINH NGUYEN";
 
@@ -51,29 +52,77 @@ export function Hero() {
         style={{ x: glowX, y: glowY, background: "var(--terminal)" }}
       />
 
-      <div className="relative">
+      {/* Top Meta Bar & Avatar Card Header */}
+      <div className="relative flex flex-wrap items-center justify-between gap-4">
         <p className="font-mono text-xs uppercase tracking-[0.4em] text-muted-foreground">
           PORTFOLIO / 2026
         </p>
-      </div>
 
-      <div className="relative">
-        <h1 className="display-xl text-[13vw] leading-[0.85] sm:text-[9.5vw]">
-          <span className="block">
-            {typed}
-            <span className="caret text-terminal">_</span>
+        <div className="flex items-center gap-2 border border-border bg-card px-3 py-1.5 font-mono text-[11px] uppercase tracking-widest text-muted-foreground">
+          <span className="relative flex h-2 w-2">
+            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-terminal opacity-75"></span>
+            <span className="relative inline-flex rounded-full h-2 w-2 bg-terminal"></span>
           </span>
-          <motion.span
-            initial={{ opacity: 0, y: 40 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 1.1, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-            className="block text-muted-foreground"
-          >
-            CS STUDENT @ HCMUT
-          </motion.span>
-        </h1>
+          <span>DEV_ID: THINH_NGUYEN</span>
+        </div>
       </div>
 
+      {/* Main Hero Content & Avatar Grid */}
+      <div className="relative my-auto py-8 grid grid-cols-1 lg:grid-cols-[1fr_auto] items-center gap-12">
+        {/* Left Headline */}
+        <div>
+          <h1 className="display-xl text-[12vw] leading-[0.85] sm:text-[8.5vw] lg:text-[7vw]">
+            <span className="block">
+              {typed}
+              <span className="caret text-terminal">_</span>
+            </span>
+            <motion.span
+              initial={{ opacity: 0, y: 40 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 1.1, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+              className="block text-muted-foreground mt-2"
+            >
+              CS STUDENT @ HCMUT
+            </motion.span>
+          </h1>
+        </div>
+
+        {/* Right Brutalist Avatar Frame */}
+        <motion.div
+          initial={{ opacity: 0, scale: 0.95 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ delay: 0.8, duration: 0.8 }}
+          className="relative group shrink-0 mx-auto lg:mx-0"
+        >
+          {/* Outer Brutalist Frame */}
+          <div className="bento-card relative w-56 sm:w-64 lg:w-72 aspect-[4/5] border border-border bg-card p-3 overflow-hidden transition-all duration-500">
+            {/* Image Header Badge */}
+            <div className="flex items-center justify-between border-b border-border pb-2 mb-3 font-mono text-[10px] uppercase tracking-widest text-muted-foreground">
+              <span>[IMG_07.PNG]</span>
+              <span className="text-terminal">LIVE_PREVIEW</span>
+            </div>
+
+            {/* Avatar Image Container */}
+            <div className="relative w-full h-[calc(100%-28px)] overflow-hidden border border-border">
+              <img
+                src={avatarImg}
+                alt="Thinh Nguyen Duc"
+                className="w-full h-full object-cover grayscale contrast-110 group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700"
+              />
+              {/* Scanline overlay */}
+              <div className="absolute inset-0 bg-gradient-to-b from-transparent via-terminal/5 to-transparent pointer-events-none opacity-40"></div>
+            </div>
+
+            {/* Corner Crosshairs */}
+            <span className="absolute top-1 left-1 font-mono text-[9px] text-muted-foreground">+</span>
+            <span className="absolute top-1 right-1 font-mono text-[9px] text-muted-foreground">+</span>
+            <span className="absolute bottom-1 left-1 font-mono text-[9px] text-muted-foreground">+</span>
+            <span className="absolute bottom-1 right-1 font-mono text-[9px] text-muted-foreground">+</span>
+          </div>
+        </motion.div>
+      </div>
+
+      {/* Bottom Bio Bar */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
@@ -85,7 +134,7 @@ export function Hero() {
         </p>
         <a
           href="#projects"
-          className="shrink-0 border border-foreground px-6 py-3 font-mono text-xs uppercase tracking-[0.2em] invert-hover"
+          className="shrink-0 border border-foreground px-6 py-3 font-mono text-xs uppercase tracking-[0.2em] invert-hover cursor-pointer"
         >
           View work ↓
         </a>

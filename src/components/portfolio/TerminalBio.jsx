@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import avatarImg from "/assets/img/avatar.png";
 
 const COMMANDS = {
   help: [
@@ -71,9 +72,23 @@ export function TerminalBio() {
             <br />
             that matter.
           </h2>
-          <p className="mt-8 max-w-md text-base leading-relaxed text-muted-foreground">
+
+          <p className="mt-6 max-w-md text-base leading-relaxed text-muted-foreground">
             Third-year Computer Science student at Ho Chi Minh City University of Technology (HCMUT). Driven by a passion for clean software architecture, system scalability, and intelligent algorithms.
           </p>
+
+          {/* Quick ID Badge */}
+          <div className="mt-8 inline-flex items-center gap-4 border border-border bg-card p-3">
+            <img
+              src={avatarImg}
+              alt="Thinh Nguyen Duc"
+              className="w-12 h-12 object-cover border border-border grayscale hover:grayscale-0 transition-all duration-300"
+            />
+            <div className="font-mono text-xs">
+              <p className="font-bold text-foreground uppercase">Thinh Nguyen Duc</p>
+              <p className="text-terminal">Computer Science @ HCMUT</p>
+            </div>
+          </div>
         </div>
 
         <div

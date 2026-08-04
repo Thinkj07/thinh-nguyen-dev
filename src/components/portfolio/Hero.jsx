@@ -71,8 +71,8 @@ export function Hero() {
       <div className="relative my-auto py-8 grid grid-cols-1 lg:grid-cols-[1fr_auto] items-center gap-12">
         {/* Left Headline */}
         <div>
-          <h1 className="display-xl text-[12vw] leading-[0.85] sm:text-[8.5vw] lg:text-[7vw]">
-            <span className="block">
+          <h1 className="display-xl text-[9vw] sm:text-[7.2vw] lg:text-[5.5vw] leading-[0.88] tracking-tight">
+            <span className="block whitespace-nowrap overflow-hidden text-ellipsis">
               {typed}
               <span className="caret text-terminal">_</span>
             </span>

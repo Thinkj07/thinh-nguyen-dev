@@ -1,12 +1,12 @@
 import React from "react";
-import { SmoothScroll } from "./components/portfolio/SmoothScroll";
-import { CustomCursor } from "./components/portfolio/CustomCursor";
-import { Hero } from "./components/portfolio/Hero";
-import { TerminalBio } from "./components/portfolio/TerminalBio";
-import { Projects } from "./components/portfolio/Projects";
-import { SkillsMarquee } from "./components/portfolio/SkillsMarquee";
-import { Timeline } from "./components/portfolio/Timeline";
-import { Contact } from "./components/portfolio/Contact";
+import { SmoothScroll } from "./portfolio/SmoothScroll";
+import { CustomCursor } from "./portfolio/CustomCursor";
+import { Hero } from "./portfolio/Hero";
+import { TerminalBio } from "./portfolio/TerminalBio";
+import { Projects } from "./portfolio/Projects";
+import { SkillsMarquee } from "./portfolio/SkillsMarquee";
+import { Timeline } from "./portfolio/Timeline";
+import { Contact } from "./portfolio/Contact";
 
 const NAV = [
   { label: "About", href: "#about" },

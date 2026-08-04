@@ -5,12 +5,10 @@ const SKILLS = [
   { name: "Node.js", meta: "85% · 6 projects" },
   { name: "Python", meta: "90% · 8 projects" },
   { name: "Java", meta: "80% · 3 projects" },
-  { name: "JavaScript (ES6+)", meta: "80% · 10 projects" },
+  { name: "JavaScript", meta: "80% · 10 projects" },
   { name: "HTML5 & CSS3", meta: "90% · daily" },
   { name: "MySQL & MongoDB", meta: "80% · 4 databases" },
-  { name: "Pygame & AI", meta: "Minimax & MCTS" },
   { name: "Git & GitHub", meta: "daily workflow" },
-  { name: "Algorithms & DS", meta: "HCMUT CS Core" },
 ];
 
 export function SkillsMarquee() {

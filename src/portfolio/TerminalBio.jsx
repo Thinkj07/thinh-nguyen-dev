@@ -12,10 +12,10 @@ const COMMANDS = {
     "  clear     — wipe the screen",
   ],
   skills: [
-    "frontend  : ReactJS, JavaScript (ES6+), HTML5, CSS3, Tailwind CSS",
+    "frontend  : ReactJS, JavaScript, HTML5, CSS3, Tailwind CSS",
     "backend   : Node.js, Express, Python, Java",
-    "databases : MySQL, MongoDB",
-    "ai & game : Pygame, Scikit-learn, MCTS & Minimax Algorithms",
+    "databases : MySQL, MongoDB, PostgreSQL",
+    "ai : ChatGPT, Gemini, Cursor",
   ],
   projects: [
     "1. ITWORKS            [MERN Stack, JWT Auth, Role-Based Access]",
@@ -29,7 +29,7 @@ const COMMANDS = {
     "linkedin : linkedin.com/in/thinkj07/",
   ],
   whoami: [
-    "thinh nguyen duc — 3rd year computer science student @ hcmut.",
+    "thinh nguyen duc — 4th year computer science student @ hcmut.",
     "focus: full-stack web applications, backend architecture & ai systems.",
   ],
 };
@@ -99,7 +99,7 @@ export function TerminalBio() {
           </h2>
 
           <p className="mt-6 max-w-md text-base leading-relaxed text-muted-foreground">
-            Third-year Computer Science student at Ho Chi Minh City University of Technology (HCMUT). Driven by a passion for clean software architecture, system scalability, and intelligent algorithms.
+            Fourth-year Computer Science student at Ho Chi Minh City University of Technology (HCMUT). Driven by a passion for clean software architecture, system scalability, and intelligent algorithms.
           </p>
 
           {/* Quick ID Badge */}

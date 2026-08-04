@@ -7,7 +7,7 @@ const PROJECTS = [
   {
     title: "ITWORKS Platform",
     blurb:
-      "A full-stack job platform with JWT authentication, role-based access control, advanced job filtering, application tracking, and Admin Dashboard with audit logging.",
+      "A full-stack job application platform with JWT authentication, role-based access control,...",
     stack: ["JavaScript", "Node.js", "Express", "React", "MongoDB"],
     image: project1,
     github: "https://github.com/Thinkj07/itwork",
@@ -15,7 +15,7 @@ const PROJECTS = [
   },
   {
     title: "Personal Portfolio",
-    blurb: "Modern, responsive portfolio website with Canvas API animations, custom cursor, smooth scrolling, and dark mode.",
+    blurb: "Modern, responsive portfolio website with Canvas API animations.",
     stack: ["React", "HTML5", "CSS3", "JavaScript", "Vite"],
     image: project2,
     github: "https://github.com/Thinkj07/thinh-nguyen-dev",
@@ -23,7 +23,7 @@ const PROJECTS = [
   },
   {
     title: "Connect 4 AI Engine",
-    blurb: "Tactical board game with AI (MCTS & Minimax optimized by Neural Network), real-time scoring, physics animations, and JSON save/load.",
+    blurb: "Tactical board game with AI (MCTS & Minimax optimized by Neural Network).",
     stack: ["Python", "Pygame", "Scikit-learn"],
     image: project3,
     github: "https://github.com/Thinkj07/Connect_4",

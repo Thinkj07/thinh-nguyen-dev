@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import avatarImg from "/assets/img/avatar.png";
+import { getMatchingGame } from "./cli/games";
 
 const COMMANDS = {
   help: [
@@ -28,7 +29,7 @@ const COMMANDS = {
     "linkedin : linkedin.com/in/thinkj07/",
   ],
   whoami: [
-    "thinh nguyen duc — 4th year computer science student @ hcmut.",
+    "thinh nguyen duc — 3rd year computer science student @ hcmut.",
     "focus: full-stack web applications, backend architecture & ai systems.",
   ],
 };
@@ -36,24 +37,37 @@ const COMMANDS = {
 const QUICK = ["help", "skills", "projects", "contact"];
 
 export function TerminalBio() {
+  const [activeGame, setActiveGame] = useState(null); // null or matched game object from CLI_GAMES
   const [lines, setLines] = useState([
     { kind: "out", text: "guest@thinhnguyen:~$ session started. type `help` to begin." },
   ]);
   const [value, setValue] = useState("");
+
   const bodyRef = useRef(null);
   const inputRef = useRef(null);
 
   useEffect(() => {
-    bodyRef.current?.scrollTo({ top: bodyRef.current.scrollHeight });
-  }, [lines]);
+    if (!activeGame) {
+      bodyRef.current?.scrollTo({ top: bodyRef.current.scrollHeight });
+    }
+  }, [lines, activeGame]);
 
   const run = (raw) => {
     const cmd = raw.trim().toLowerCase();
     if (!cmd) return;
+
     if (cmd === "clear") {
       setLines([]);
       return;
     }
+
+    // Check if input command matches any secret CLI game in registry
+    const matchedGame = getMatchingGame(cmd);
+    if (matchedGame) {
+      setActiveGame(matchedGame);
+      return;
+    }
+
     const out = COMMANDS[cmd] ?? [`command not found: ${cmd} — try \`help\``];
     setLines((prev) => [
       ...prev,
@@ -61,6 +75,18 @@ export function TerminalBio() {
       ...out.map((text) => ({ kind: "out", text })),
     ]);
   };
+
+  const handleExitGame = () => {
+    const gameName = activeGame ? activeGame.id : "game";
+    setActiveGame(null);
+    setLines((prev) => [
+      ...prev,
+      { kind: "in", text: gameName },
+      { kind: "out", text: `${gameName} session closed. welcome back to bash.` },
+    ]);
+  };
+
+  const GameComponent = activeGame ? activeGame.component : null;
 
   return (
     <section id="about" className="border-t border-border px-5 py-24 sm:px-10">
@@ -91,60 +117,73 @@ export function TerminalBio() {
           </div>
         </div>
 
+        {/* CLI Terminal Container */}
         <div
-          className="border border-border bg-card"
-          onClick={() => inputRef.current?.focus()}
+          className="border border-border bg-card flex flex-col justify-between"
+          onClick={() => {
+            if (!activeGame) inputRef.current?.focus();
+          }}
           data-cursor
         >
-          <div className="flex items-center gap-2 border-b border-border px-4 py-3">
-            <span className="h-2.5 w-2.5 rounded-full bg-muted-foreground" />
-            <span className="h-2.5 w-2.5 rounded-full bg-muted-foreground" />
-            <span className="h-2.5 w-2.5 rounded-full bg-terminal" />
-            <span className="ml-3 font-mono text-[11px] uppercase tracking-widest text-muted-foreground">
-              bash — thinh@portfolio
-            </span>
+          {/* Header Bar */}
+          <div className="flex items-center justify-between border-b border-border px-4 py-3 shrink-0">
+            <div className="flex items-center gap-2">
+              <span className="h-2.5 w-2.5 rounded-full bg-muted-foreground" />
+              <span className="h-2.5 w-2.5 rounded-full bg-muted-foreground" />
+              <span className="h-2.5 w-2.5 rounded-full bg-terminal" />
+              <span className="ml-3 font-mono text-[11px] uppercase tracking-widest text-muted-foreground">
+                {activeGame ? activeGame.processName : "bash — thinh@portfolio"}
+              </span>
+            </div>
           </div>
 
-          <div
-            ref={bodyRef}
-            className="h-72 overflow-y-auto px-4 py-4 font-mono text-[13px] leading-relaxed"
-          >
-            {lines.map((line, i) => (
-              <p key={i} className={line.kind === "in" ? "text-terminal" : "text-muted-foreground"}>
-                {line.kind === "in" ? `guest@thinhnguyen:~$ ${line.text}` : line.text}
-              </p>
-            ))}
-            <form
-              onSubmit={(e) => {
-                e.preventDefault();
-                run(value);
-                setValue("");
-              }}
-              className="flex items-center gap-2"
-            >
-              <span className="text-terminal">guest@thinhnguyen:~$</span>
-              <input
-                ref={inputRef}
-                value={value}
-                onChange={(e) => setValue(e.target.value)}
-                spellCheck={false}
-                aria-label="Terminal command input"
-                className="flex-1 bg-transparent font-mono text-[13px] text-foreground outline-none"
-              />
-            </form>
+          {/* Terminal Body */}
+          <div className="h-80 px-4 py-4 font-mono text-[13px] leading-relaxed overflow-hidden">
+            {activeGame && GameComponent ? (
+              <GameComponent onExit={handleExitGame} />
+            ) : (
+              <div ref={bodyRef} className="h-full overflow-y-auto pr-1">
+                {lines.map((line, i) => (
+                  <p key={i} className={line.kind === "in" ? "text-terminal" : "text-muted-foreground"}>
+                    {line.kind === "in" ? `guest@thinhnguyen:~$ ${line.text}` : line.text}
+                  </p>
+                ))}
+                <form
+                  onSubmit={(e) => {
+                    e.preventDefault();
+                    run(value);
+                    setValue("");
+                  }}
+                  className="flex items-center gap-2"
+                >
+                  <span className="text-terminal">guest@thinhnguyen:~$</span>
+                  <input
+                    ref={inputRef}
+                    value={value}
+                    onChange={(e) => setValue(e.target.value)}
+                    spellCheck={false}
+                    aria-label="Terminal command input"
+                    className="flex-1 bg-transparent font-mono text-[13px] text-foreground outline-none"
+                  />
+                </form>
+              </div>
+            )}
           </div>
 
-          <div className="flex flex-wrap gap-2 border-t border-border px-4 py-3">
-            {QUICK.map((c) => (
-              <button
-                key={c}
-                onClick={() => run(c)}
-                className="border border-border px-3 py-1.5 font-mono text-[11px] uppercase tracking-widest invert-hover cursor-pointer"
-              >
-                {c}
-              </button>
-            ))}
-          </div>
+          {/* Quick Buttons (Only in bash mode) */}
+          {!activeGame && (
+            <div className="flex flex-wrap gap-2 border-t border-border px-4 py-3 shrink-0">
+              {QUICK.map((c) => (
+                <button
+                  key={c}
+                  onClick={() => run(c)}
+                  className="border border-border px-3 py-1.5 font-mono text-[11px] uppercase tracking-widest invert-hover cursor-pointer"
+                >
+                  {c}
+                </button>
+              ))}
+            </div>
+          )}
         </div>
       </div>
     </section>

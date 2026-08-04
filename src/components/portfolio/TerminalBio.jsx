@@ -138,7 +138,7 @@ export function TerminalBio() {
           </div>
 
           {/* Terminal Body */}
-          <div className="h-80 px-4 py-4 font-mono text-[13px] leading-relaxed overflow-hidden">
+          <div className="h-80 px-4 py-1 font-mono text-[13px] leading-relaxed overflow-hidden">
             {activeGame && GameComponent ? (
               <GameComponent onExit={handleExitGame} />
             ) : (

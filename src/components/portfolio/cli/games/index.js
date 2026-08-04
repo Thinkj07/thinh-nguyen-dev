@@ -10,8 +10,8 @@ export const CLI_GAMES = {
   snake: {
     id: "snake",
     title: "SNAKE.EXE",
-    processName: "bash — snake.exe [easter_egg]",
-    aliases: ["snake", "play snake", "game", "easteregg", "secret"],
+    processName: "bash — snake.exe",
+    aliases: ["snake", "play snake"],
     component: SnakeGame,
   },
   // Example for future games:

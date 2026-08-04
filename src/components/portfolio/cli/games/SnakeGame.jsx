@@ -1,7 +1,8 @@
 import React, { useState, useEffect, useRef, useCallback } from "react";
 
-const GRID_SIZE = 14; // 14x14 grid fits inside terminal box
-const INITIAL_SPEED = 120;
+const GRID_SIZE_X = 37;
+const GRID_SIZE_Y = 15; // 14x14 grid fits inside terminal box
+const INITIAL_SPEED = 100;
 
 const INITIAL_SNAKE = [
   { x: 7, y: 7 },
@@ -28,8 +29,8 @@ export function SnakeGame({ onExit }) {
     let newFood;
     while (true) {
       newFood = {
-        x: Math.floor(Math.random() * GRID_SIZE),
-        y: Math.floor(Math.random() * GRID_SIZE),
+        x: Math.floor(Math.random() * GRID_SIZE_X),
+        y: Math.floor(Math.random() * GRID_SIZE_Y),
       };
       const isOverlap = currentSnake.some(
         (segment) => segment.x === newFood.x && segment.y === newFood.y
@@ -68,9 +69,9 @@ export function SnakeGame({ onExit }) {
       // Wall collision
       if (
         newHead.x < 0 ||
-        newHead.x >= GRID_SIZE ||
+        newHead.x >= GRID_SIZE_X ||
         newHead.y < 0 ||
-        newHead.y >= GRID_SIZE
+        newHead.y >= GRID_SIZE_Y
       ) {
         setGameState("gameover");
         return prevSnake;
@@ -173,19 +174,19 @@ export function SnakeGame({ onExit }) {
 
   const renderGridRows = () => {
     const rows = [];
-    for (let r = 0; r < GRID_SIZE; r++) {
+    for (let r = 0; r < GRID_SIZE_Y; r++) {
       let rowChars = "";
-      for (let c = 0; c < GRID_SIZE; c++) {
+      for (let c = 0; c < GRID_SIZE_X; c++) {
         const isHead = snake[0].x === c && snake[0].y === r;
         const isSnakeBody = snake.slice(1).some((s) => s.x === c && s.y === r);
         const isFood = food.x === c && food.y === r;
 
         if (isHead) {
-          rowChars += "█ ";
+          rowChars += "# ";
         } else if (isSnakeBody) {
-          rowChars += "■ ";
+          rowChars += "* ";
         } else if (isFood) {
-          rowChars += "🍎";
+          rowChars += "@ ";
         } else {
           rowChars += "· ";
         }
@@ -198,7 +199,7 @@ export function SnakeGame({ onExit }) {
   return (
     <div className="flex flex-col h-full justify-between font-mono select-none text-[12px] leading-tight">
       {/* Top CLI Game Score Header */}
-      <div className="flex items-center justify-between border-b border-border pb-2 text-[11px] text-muted-foreground">
+      <div className="flex items-center justify-between border-b border-border pb-2 text-[11px] text-muted-foreground shrink-0 ">
         <span>SCORE: <strong className="text-terminal">{score}</strong></span>
         <span>HIGH: <strong className="text-foreground">{highScore}</strong></span>
         <button
@@ -210,15 +211,15 @@ export function SnakeGame({ onExit }) {
       </div>
 
       {/* Grid Display Body */}
-      <div className="relative my-auto flex flex-col items-center justify-center py-1">
+      <div className="flex-1 flex flex-col items-center justify-center overflow-hidden py-1">
         {gameState === "playing" ? (
           <div className="flex flex-col items-center justify-center font-mono">
             {renderGridRows().map((rowStr, idx) => (
               <div key={idx} className="whitespace-pre tracking-widest text-center">
                 {rowStr.split("").map((ch, charIdx) => {
-                  if (ch === "█") return <span key={charIdx} className="text-terminal font-bold">{ch}</span>;
-                  if (ch === "■") return <span key={charIdx} className="text-foreground">{ch}</span>;
-                  if (ch === "🍎") return <span key={charIdx} className="animate-pulse">{ch}</span>;
+                  if (ch === "#") return <span key={charIdx} className="text-terminal font-bold">{ch}</span>;
+                  if (ch === "*") return <span key={charIdx} className="text-foreground">{ch}</span>;
+                  if (ch === "@") return <span key={charIdx} className="animate-pulse">{ch}</span>;
                   return <span key={charIdx} className="text-muted-foreground/30">{ch}</span>;
                 })}
               </div>

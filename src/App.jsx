@@ -25,7 +25,7 @@ export default function App() {
       {/* Header Navigation */}
       <header className="fixed inset-x-0 top-0 z-50 grid grid-cols-[minmax(0,1fr)_auto] items-center gap-4 border-b border-border bg-background/80 px-5 py-4 backdrop-blur sm:px-10">
         <a href="#hero" className="min-w-0 truncate font-display font-bold uppercase tracking-tight text-foreground hover:text-terminal transition-colors">
-          THINH NGUYEN DUC<span className="text-terminal">.</span>
+          THINH NGUYEN<span className="text-terminal">_</span>
         </a>
         <nav className="flex shrink-0 gap-5 font-mono text-[11px] uppercase tracking-[0.2em]">
           {NAV.map((n) => (

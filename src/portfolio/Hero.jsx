@@ -55,7 +55,7 @@ export function Hero() {
       {/* Top Meta Bar & Avatar Card Header */}
       <div className="relative flex flex-wrap items-center justify-between gap-4">
         <p className="font-mono text-xs uppercase tracking-[0.4em] text-muted-foreground">
-          PORTFOLIO / 2026
+          PORTFOLIO / {new Date().getFullYear()}
         </p>
 
         <div className="flex items-center gap-2 border border-border bg-card px-3 py-1.5 font-mono text-[11px] uppercase tracking-widest text-muted-foreground">

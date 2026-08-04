@@ -37,7 +37,7 @@ const COMMANDS = {
 const QUICK = ["help", "skills", "projects", "contact"];
 
 export function TerminalBio() {
-  const [activeGame, setActiveGame] = useState(null); // null or matched game object from CLI_GAMES
+  const [activeGame, setActiveGame] = useState(null);
   const [lines, setLines] = useState([
     { kind: "out", text: "guest@thinhnguyen:~$ session started. type `help` to begin." },
   ]);
@@ -61,7 +61,6 @@ export function TerminalBio() {
       return;
     }
 
-    // Check if input command matches any secret CLI game in registry
     const matchedGame = getMatchingGame(cmd);
     if (matchedGame) {
       setActiveGame(matchedGame);
@@ -117,9 +116,9 @@ export function TerminalBio() {
           </div>
         </div>
 
-        {/* CLI Terminal Container */}
+        {/* CLI Terminal Container with fixed height matching original CLI */}
         <div
-          className="border border-border bg-card flex flex-col justify-between"
+          className="border border-border bg-card flex flex-col justify-between h-[390px] overflow-hidden"
           onClick={() => {
             if (!activeGame) inputRef.current?.focus();
           }}
@@ -138,7 +137,7 @@ export function TerminalBio() {
           </div>
 
           {/* Terminal Body */}
-          <div className="h-80 px-4 py-1 font-mono text-[13px] leading-relaxed overflow-hidden">
+          <div className="flex-1 px-4 py-2 font-mono text-[13px] leading-relaxed overflow-hidden">
             {activeGame && GameComponent ? (
               <GameComponent onExit={handleExitGame} />
             ) : (
@@ -170,20 +169,27 @@ export function TerminalBio() {
             )}
           </div>
 
-          {/* Quick Buttons (Only in bash mode) */}
-          {!activeGame && (
-            <div className="flex flex-wrap gap-2 border-t border-border px-4 py-3 shrink-0">
-              {QUICK.map((c) => (
-                <button
-                  key={c}
-                  onClick={() => run(c)}
-                  className="border border-border px-3 py-1.5 font-mono text-[11px] uppercase tracking-widest invert-hover cursor-pointer"
-                >
-                  {c}
-                </button>
-              ))}
-            </div>
-          )}
+          {/* Footer Bar (Buttons in bash mode, control info in game mode) */}
+          <div className="border-t border-border px-4 py-2.5 shrink-0 min-h-[46px] flex items-center">
+            {activeGame ? (
+              <div className="w-full flex items-center justify-between font-mono text-[10px] text-muted-foreground uppercase tracking-wider">
+                <span>WASD / ARROWS: MOVE</span>
+                <span>PRESS Q TO RETURN TO BASH</span>
+              </div>
+            ) : (
+              <div className="flex flex-wrap gap-2">
+                {QUICK.map((c) => (
+                  <button
+                    key={c}
+                    onClick={() => run(c)}
+                    className="border border-border px-3 py-1 font-mono text-[11px] uppercase tracking-widest invert-hover cursor-pointer"
+                  >
+                    {c}
+                  </button>
+                ))}
+              </div>
+            )}
+          </div>
         </div>
       </div>
     </section>

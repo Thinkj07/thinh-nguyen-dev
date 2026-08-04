@@ -1,13 +1,13 @@
 import React, { useState, useEffect, useRef, useCallback } from "react";
 
-const GRID_SIZE_X = 37;
-const GRID_SIZE_Y = 15; // 14x14 grid fits inside terminal box
+const GRID_SIZE_X = 26;
+const GRID_SIZE_Y = 10;
 const INITIAL_SPEED = 100;
 
 const INITIAL_SNAKE = [
-  { x: 7, y: 7 },
-  { x: 7, y: 8 },
-  { x: 7, y: 9 },
+  { x: 5, y: 4 },
+  { x: 5, y: 5 },
+  { x: 5, y: 6 },
 ];
 
 const INITIAL_DIR = { x: 0, y: -1 };
@@ -42,9 +42,9 @@ export function SnakeGame({ onExit }) {
 
   const startGame = useCallback(() => {
     const freshSnake = [
-      { x: 7, y: 7 },
-      { x: 7, y: 8 },
-      { x: 7, y: 9 },
+      { x: 5, y: 4 },
+      { x: 5, y: 5 },
+      { x: 5, y: 6 },
     ];
     setSnake(freshSnake);
     const startDir = { x: 0, y: -1 };
@@ -199,7 +199,7 @@ export function SnakeGame({ onExit }) {
   return (
     <div className="flex flex-col h-full justify-between font-mono select-none text-[12px] leading-tight">
       {/* Top CLI Game Score Header */}
-      <div className="flex items-center justify-between border-b border-border pb-2 text-[11px] text-muted-foreground shrink-0 ">
+      <div className="flex items-center justify-between border-b border-border pb-1.5 text-[11px] text-muted-foreground shrink-0">
         <span>SCORE: <strong className="text-terminal">{score}</strong></span>
         <span>HIGH: <strong className="text-foreground">{highScore}</strong></span>
         <button
@@ -226,14 +226,14 @@ export function SnakeGame({ onExit }) {
             ))}
           </div>
         ) : (
-          <div className="flex flex-col items-center justify-center space-y-3 py-6 text-center">
-            <p className="text-red-500 font-extrabold text-lg uppercase tracking-widest">
+          <div className="flex flex-col items-center justify-center space-y-2 py-4 text-center">
+            <p className="text-red-500 font-extrabold text-base uppercase tracking-widest">
               GAME OVER
             </p>
             <p className="text-xs text-muted-foreground">
               FINAL SCORE: <span className="text-terminal font-bold">{score}</span>
             </p>
-            <div className="flex gap-2 pt-2">
+            <div className="flex gap-2 pt-1">
               <button
                 onClick={startGame}
                 className="border border-terminal px-3 py-1 text-xs text-terminal hover:bg-terminal hover:text-background cursor-pointer"
@@ -249,12 +249,6 @@ export function SnakeGame({ onExit }) {
             </div>
           </div>
         )}
-      </div>
-
-      {/* Control Footer Info */}
-      <div className="border-t border-border pt-2 text-[10px] text-muted-foreground flex justify-between items-center">
-        <span>WASD / ARROWS: MOVE</span>
-        <span>PRESS Q TO RETURN TO BASH</span>
       </div>
     </div>
   );

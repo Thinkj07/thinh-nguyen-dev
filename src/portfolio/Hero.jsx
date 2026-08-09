@@ -1,10 +1,16 @@
 import { useEffect, useRef, useState } from "react";
 import { motion, useMotionValue, useSpring, useTransform } from "motion/react";
-import avatarImg from "/assets/img/avatar.png";
+import avatarImgDark from "/assets/img/avatar.png";
+import avatarImgLight from "/assets/img/avatar_negate.png";
+import { useTheme } from "../lib/ThemeContext";
 
 const LINE_1 = "HI, I'M THINH NGUYEN";
 
 export function Hero() {
+  const { isDark } = useTheme();
+  const avatarImg = isDark ? avatarImgDark : avatarImgLight;
+  const imgBadge = isDark ? "[IMG_07.PNG]" : "[IMG_NEGATE.PNG]";
+
   const [typed, setTyped] = useState("");
   const ref = useRef(null);
   const mx = useMotionValue(0);
@@ -98,7 +104,7 @@ export function Hero() {
           <div className="bento-card relative w-56 sm:w-64 lg:w-72 aspect-[4/5] border border-border bg-card p-3 overflow-hidden transition-all duration-500">
             {/* Image Header Badge */}
             <div className="flex items-center justify-between border-b border-border pb-2 mb-3 font-mono text-[10px] uppercase tracking-widest text-muted-foreground">
-              <span>[IMG_07.PNG]</span>
+              <span>{imgBadge}</span>
               <span className="text-terminal">LIVE_PREVIEW</span>
             </div>
 

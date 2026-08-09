@@ -1,5 +1,7 @@
 import { useEffect, useRef, useState } from "react";
-import avatarImg from "/assets/img/avatar.png";
+import avatarImgDark from "/assets/img/avatar.png";
+import avatarImgLight from "/assets/img/avatar_negate.png";
+import { useTheme } from "../lib/ThemeContext";
 import { getMatchingGame } from "./cli/games";
 
 const COMMANDS = {
@@ -37,6 +39,8 @@ const COMMANDS = {
 const QUICK = ["help", "skills", "projects", "contact"];
 
 export function TerminalBio() {
+  const { isDark } = useTheme();
+  const avatarImg = isDark ? avatarImgDark : avatarImgLight;
   const [activeGame, setActiveGame] = useState(null);
   const [lines, setLines] = useState([
     { kind: "out", text: "guest@thinhnguyen:~$ session started. type `help` to begin." },

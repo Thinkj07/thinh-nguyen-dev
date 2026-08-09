@@ -9,7 +9,7 @@ const LINE_1 = "HI, I'M THINH NGUYEN";
 export function Hero() {
   const { isDark } = useTheme();
   const avatarImg = isDark ? avatarImgDark : avatarImgLight;
-  const imgBadge = isDark ? "[IMG_07.PNG]" : "[IMG_NEGATE.PNG]";
+  const imgBadge = isDark ? "[IMG_07.PNG]" : "[GNP.70_GMI]";
 
   const [typed, setTyped] = useState("");
   const ref = useRef(null);

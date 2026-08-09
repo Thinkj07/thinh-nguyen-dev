@@ -1,6 +1,6 @@
 @import "tailwindcss";
 
-@custom-variant dark (&:is(.dark *));
+@custom-variant dark (&:is(.dark, .dark *));
 
 @theme inline {
   --radius-sm: 0px;
@@ -34,6 +34,29 @@
 
 :root {
   --radius: 0px;
+  --background: #f8fafc;
+  --foreground: #0f172a;
+  --card: #ffffff;
+  --card-foreground: #0f172a;
+  --popover: #ffffff;
+  --popover-foreground: #0f172a;
+  --primary: #0f172a;
+  --primary-foreground: #ffffff;
+  --secondary: #f1f5f9;
+  --secondary-foreground: #0f172a;
+  --muted: #f1f5f9;
+  --muted-foreground: #64748b;
+  --accent: #0284c7;
+  --accent-foreground: #ffffff;
+  --destructive: oklch(0.6 0.24 27);
+  --destructive-foreground: #ffffff;
+  --border: #e2e8f0;
+  --input: #e2e8f0;
+  --ring: #0284c7;
+  --terminal: #0284c7;
+}
+
+.dark {
   --background: oklch(0 0 0);
   --foreground: oklch(1 0 0);
   --card: oklch(0.14 0 0);
@@ -56,11 +79,6 @@
   --terminal: #1488D8;
 }
 
-.dark {
-  --background: oklch(0 0 0);
-  --foreground: oklch(1 0 0);
-}
-
 @layer base {
   * {
     border-color: var(--color-border);
@@ -68,6 +86,7 @@
 
   html {
     scrollbar-width: none;
+    transition: background-color 0.3s ease, color 0.3s ease;
   }
 
   body {
@@ -75,6 +94,7 @@
     color: var(--color-foreground);
     font-family: var(--font-sans);
     -webkit-font-smoothing: antialiased;
+    transition: background-color 0.3s ease, color 0.3s ease;
   }
 
   ::selection {

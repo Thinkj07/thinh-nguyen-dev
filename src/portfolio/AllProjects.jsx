@@ -33,7 +33,7 @@ export function AllProjects() {
       </header>
 
       {/* Main Section */}
-      <main className="px-5 pt-28 pb-20 sm:px-10 max-w-6xl mx-auto">
+      <main className="px-5 pt-28 pb-20 sm:px-10 max-w-7xl mx-auto">
         {/* Title Header */}
         <div className="flex flex-col sm:flex-row sm:items-end justify-between border-b border-border pb-8 gap-4">
           <div>
@@ -47,69 +47,88 @@ export function AllProjects() {
           </span>
         </div>
 
-        {/* Minimal Projects Grid */}
-        <div className="mt-10 grid grid-cols-1 md:grid-cols-2 gap-4">
+        {/* Minimal Projects Grid - Image on Top, Text Below */}
+        <div className="mt-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {projectsData.map((p, i) => (
-            <motion.a
+            <motion.div
               key={p.id || p.title}
-              href={p.demo || p.github}
-              target="_blank"
-              rel="noopener noreferrer"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.4, delay: i * 0.05 }}
-              className="bento-card group flex min-h-[15rem] flex-col justify-between p-6 border border-border bg-card transition-all hover:border-terminal"
+              className="bento-card group flex flex-col justify-between border border-border bg-card overflow-hidden transition-all duration-300 hover:border-terminal"
             >
-              {p.image && (
-                <img
-                  src={p.image}
-                  alt={p.title}
-                  aria-hidden
-                  loading="lazy"
-                  className="pointer-events-none absolute inset-0 h-full w-full object-cover opacity-15 grayscale transition-all duration-700 group-hover:scale-105 group-hover:opacity-40"
-                />
-              )}
-
-              <div className="relative flex items-start justify-between gap-4">
-                <h2 className="font-display text-2xl font-bold uppercase tracking-tight text-foreground group-hover:text-terminal transition-colors">
-                  {p.title}
-                </h2>
-                <span className="shrink-0 text-xl transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-terminal">
-                  ↗
-                </span>
+              {/* Top Image Preview */}
+              <div className="relative aspect-[16/10] w-full overflow-hidden border-b border-border bg-background/50">
+                {p.image ? (
+                  <img
+                    src={p.image}
+                    alt={p.title}
+                    loading="lazy"
+                    className="h-full w-full object-cover object-top dark:grayscale dark:group-hover:grayscale-0 transition-all duration-500 group-hover:scale-105"
+                  />
+                ) : (
+                  <div className="flex h-full w-full items-center justify-center font-mono text-xs text-muted-foreground bg-muted/20">
+                    [NO_PREVIEW]
+                  </div>
+                )}
+                {/* Index badge */}
+                <div className="absolute top-2.5 right-2.5 border border-border/80 bg-background/80 px-2 py-0.5 font-mono text-[9px] uppercase tracking-wider text-muted-foreground backdrop-blur">
+                  <span>0{i + 1}</span>
+                </div>
               </div>
 
-              <div className="relative mt-8">
-                <p className="max-w-md font-mono text-sm leading-relaxed text-muted-foreground">
-                  {p.blurb}
-                </p>
+              {/* Bottom Content Area */}
+              <div className="flex flex-1 flex-col justify-between p-5 sm:p-6">
+                <div>
+                  <h2 className="font-display text-xl sm:text-2xl font-bold uppercase tracking-tight text-foreground group-hover:text-terminal transition-colors">
+                    {p.title}
+                  </h2>
+                  <p className="mt-3 font-mono text-xs leading-relaxed text-muted-foreground">
+                    {p.blurb}
+                  </p>
+                </div>
 
-                <div className="mt-5 flex flex-wrap items-center justify-between gap-3 pt-3 border-t border-border/60">
-                  <div className="flex flex-wrap gap-1.5">
+                <div className="mt-6 pt-4 border-t border-border/60">
+                  {/* Tech stack badges */}
+                  <div className="flex flex-wrap gap-1.5 mb-4">
                     {p.stack?.map((s) => (
                       <span
                         key={s}
-                        className="border border-border px-2 py-0.5 font-mono text-[10px] uppercase tracking-widest text-muted-foreground"
+                        className="border border-border bg-background/40 px-2 py-0.5 font-mono text-[10px] uppercase tracking-widest text-muted-foreground"
                       >
                         {s}
                       </span>
                     ))}
                   </div>
 
-                  {p.github && p.demo && (
-                    <a
-                      href={p.github}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      onClick={(e) => e.stopPropagation()}
-                      className="font-mono text-[11px] uppercase tracking-wider text-muted-foreground hover:text-terminal underline underline-offset-4"
-                    >
-                      source ↗
-                    </a>
-                  )}
+                  {/* Direct Link buttons */}
+                  <div className="flex flex-wrap items-center gap-3">
+                    {p.github && (
+                      <a
+                        href={p.github}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-1.5 border border-foreground/80 px-3 py-1.5 font-mono text-[11px] uppercase tracking-wider invert-hover cursor-pointer"
+                      >
+                        <span>GitHub</span>
+                        <span>↗</span>
+                      </a>
+                    )}
+                    {p.demo && (
+                      <a
+                        href={p.demo}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-1.5 border border-terminal text-terminal px-3 py-1.5 font-mono text-[11px] uppercase tracking-wider hover:bg-terminal hover:text-background transition-colors cursor-pointer"
+                      >
+                        <span>Demo</span>
+                        <span>↗</span>
+                      </a>
+                    )}
+                  </div>
                 </div>
               </div>
-            </motion.a>
+            </motion.div>
           ))}
         </div>
 

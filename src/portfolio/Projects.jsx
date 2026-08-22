@@ -18,12 +18,12 @@ export function Projects() {
         </span>
       </div>
 
-      {/* 3 Featured Projects Bento Grid */}
+      {/* Bento Grid Layout (Original Home UI) */}
       <div className="mt-12 grid gap-4 md:grid-cols-3 md:grid-rows-2">
         {featuredProjects.map((p, i) => (
           <motion.a
             key={p.id || p.title}
-            href={p.github}
+            href={p.demo || p.github}
             target="_blank"
             rel="noopener noreferrer"
             initial={{ opacity: 0, y: 32 }}
@@ -38,7 +38,7 @@ export function Projects() {
                 alt={p.title}
                 aria-hidden
                 loading="lazy"
-                className="pointer-events-none absolute inset-0 h-full w-full object-cover opacity-20 grayscale transition-all duration-700 group-hover:scale-105 group-hover:opacity-50"
+                className="pointer-events-none absolute inset-0 h-full w-full object-cover opacity-20 dark:opacity-30 dark:grayscale dark:group-hover:grayscale-0 transition-all duration-700 group-hover:scale-105 group-hover:opacity-50 dark:group-hover:opacity-60"
               />
             )}
             <div className="relative flex items-start justify-between gap-4">
@@ -50,9 +50,9 @@ export function Projects() {
               </span>
             </div>
             <div className="relative mt-10">
-              <p className="max-w-md text-sm leading-relaxed text-muted-foreground">{p.blurb}</p>
+              <p className="max-w-md text-sm leading-relaxed text-muted-foreground"></p>
               <div className="mt-5 flex flex-wrap gap-2">
-                {p.stack.map((s) => (
+                {p.stack?.map((s) => (
                   <span
                     key={s}
                     className="border border-border px-2.5 py-1 font-mono text-[10px] uppercase tracking-widest text-muted-foreground"

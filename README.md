@@ -25,9 +25,9 @@ A brutalist-minimalist, high-contrast, high-performance portfolio web applicatio
    - `contact` — Contact channels & details
    - `whoami` — Academic background summary
    - `clear` — Wipe screen buffer
-4. **Bento Grid Selected Builds (`02 / work`)**: High-contrast Bento grid featuring Thinh Nguyen Duc's real projects (**ITWORKS Platform**, **Personal Portfolio**, **Connect 4 AI Engine**) with hover scale effects, tech badges, and direct GitHub links.
+4. **Bento Grid Selected Builds (`02 / work`)**: High-contrast Bento grid featuring Thinh Nguyen Duc's real projects (**ITWORKS Platform**, **Personal Portfolio**, **Connect 4**) with hover scale effects, tech badges, and direct GitHub links.
 5. **Infinite Tech Stack Marquee (`03 / stack`)**: Interactive marquee ticker with hover pause & isolation highlighting Thinh Nguyen Duc's skills (ReactJS, Node.js, Python, Java, JavaScript, MySQL, MongoDB, Pygame & AI).
-6. **Experience & Education (`04 / experience & education`)**: Interactive accordion timeline highlighting Computer Science studies at HCMUT, ITWORKS project lead, and Connect 4 AI engine development.
+6. **Experience & Education (`04 / experience & education`)**: Interactive accordion timeline highlighting Computer Science studies at HCMUT.
 7. **Interactive Contact Footer (`05 / contact`)**: High-impact typography banner, 1-click email copier with animated ASCII particle explosion, and direct links to GitHub, LinkedIn, Facebook, and Resume PDF.
 
 ---

@@ -22,7 +22,7 @@ const COMMANDS = {
   projects: [
     "1. ITWORKS            [MERN Stack, JWT Auth, Role-Based Access]",
     "2. PERSONAL PORTFOLIO [React, Vite, Lenis, Framer Motion, Canvas]",
-    "3. CONNECT 4 AI       [Python, Pygame, MCTS & Neural Net Optimization]",
+    "3. CONNECT 4 GAME     [Python, Pygame, MCTS & Neural Net Optimization]",
   ],
   contact: [
     "email    : cbl.thinhnguyen@gmail.com",

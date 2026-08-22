@@ -1,0 +1,42 @@
+[
+  {
+    "id": "itworks",
+    "title": "ITWORKS Platform",
+    "blurb": "A full-stack job application platform with JWT authentication, role-based access control, and recruiter dashboards.",
+    "stack": ["JavaScript", "Node.js", "Express", "React", "MongoDB"],
+    "image": "/assets/img/project-1.png",
+    "github": "https://github.com/Thinkj07/itwork",
+    "demo": "",
+    "span": "md:col-span-2 md:row-span-2"
+  },
+  {
+    "id": "portfolio",
+    "title": "Personal Portfolio",
+    "blurb": "Modern, responsive portfolio website with Canvas API animations, Framer Motion, Lenis smooth scroll, interactive terminal CLI, and theme switcher.",
+    "stack": ["React", "Tailwind CSS", "Framer Motion", "JavaScript", "Vite"],
+    "image": "/assets/img/project-2.png",
+    "github": "https://github.com/Thinkj07/thinh-nguyen-dev",
+    "demo": "",
+    "span": "md:col-span-1"
+  },
+  {
+    "id": "connect4",
+    "title": "Connect 4 AI Engine",
+    "blurb": "Tactical board game engine with AI heuristic evaluation (MCTS & Minimax optimized by Neural Network).",
+    "stack": ["Python", "Pygame", "Scikit-learn", "NumPy"],
+    "image": "/assets/img/project-3.png",
+    "github": "https://github.com/Thinkj07/Connect_4",
+    "demo": "",
+    "span": "md:col-span-1"
+  },
+  {
+    "id": "sample-project",
+    "title": "Cloud Sentinel AI",
+    "blurb": "Distributed telemetry and log anomaly detection system with real-time alerting pipelines and microservices architecture.",
+    "stack": ["Python", "FastAPI", "Docker", "AWS", "PostgreSQL"],
+    "image": "/assets/img/project-1.png",
+    "github": "https://github.com/Thinkj07",
+    "demo": "",
+    "span": "md:col-span-1"
+  }
+]

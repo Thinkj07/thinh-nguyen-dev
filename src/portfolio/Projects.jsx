@@ -1,37 +1,11 @@
 import { motion } from "motion/react";
-import project1 from "/assets/img/project-1.png";
-import project2 from "/assets/img/project-2.png";
-import project3 from "/assets/img/project-3.png";
-
-const PROJECTS = [
-  {
-    title: "ITWORKS Platform",
-    blurb:
-      "A full-stack job application platform with JWT authentication, role-based access control,...",
-    stack: ["JavaScript", "Node.js", "Express", "React", "MongoDB"],
-    image: project1,
-    github: "https://github.com/Thinkj07/itwork",
-    span: "md:col-span-2 md:row-span-2",
-  },
-  {
-    title: "Personal Portfolio",
-    blurb: "Modern, responsive portfolio website with Canvas API animations.",
-    stack: ["React", "HTML5", "CSS3", "JavaScript", "Vite"],
-    image: project2,
-    github: "https://github.com/Thinkj07/thinh-nguyen-dev",
-    span: "md:col-span-1",
-  },
-  {
-    title: "Connect 4 AI Engine",
-    blurb: "Tactical board game with AI (MCTS & Minimax optimized by Neural Network).",
-    stack: ["Python", "Pygame", "Scikit-learn"],
-    image: project3,
-    github: "https://github.com/Thinkj07/Connect_4",
-    span: "md:col-span-1",
-  },
-];
+import { Link } from "react-router-dom";
+import projectsData from "../data/projects.json";
 
 export function Projects() {
+  // Always display the first 3 projects on the home page
+  const featuredProjects = projectsData.slice(0, 3);
+
   return (
     <section id="projects" className="border-t border-border px-5 py-24 sm:px-10">
       <div className="grid grid-cols-[minmax(0,1fr)_auto] items-end gap-4 sm:flex sm:justify-between">
@@ -39,13 +13,16 @@ export function Projects() {
           <p className="font-mono text-xs uppercase tracking-[0.4em] text-terminal">02 / work</p>
           <h2 className="display-xl mt-6 text-4xl sm:text-6xl">Selected builds</h2>
         </div>
-        <span className="shrink-0 font-mono text-xs text-muted-foreground">003 projects</span>
+        <span className="shrink-0 font-mono text-xs text-muted-foreground">
+          {String(featuredProjects.length).padStart(3, "0")} / {String(projectsData.length).padStart(3, "0")} projects
+        </span>
       </div>
 
+      {/* 3 Featured Projects Bento Grid */}
       <div className="mt-12 grid gap-4 md:grid-cols-3 md:grid-rows-2">
-        {PROJECTS.map((p, i) => (
+        {featuredProjects.map((p, i) => (
           <motion.a
-            key={p.title}
+            key={p.id || p.title}
             href={p.github}
             target="_blank"
             rel="noopener noreferrer"
@@ -53,15 +30,17 @@ export function Projects() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-80px" }}
             transition={{ duration: 0.6, delay: i * 0.08, ease: [0.16, 1, 0.3, 1] }}
-            className={`bento-card group flex min-h-[16rem] flex-col justify-between p-6 ${p.span}`}
+            className={`bento-card group flex min-h-[16rem] flex-col justify-between p-6 ${p.span || "md:col-span-1"}`}
           >
-            <img
-              src={p.image}
-              alt={p.title}
-              aria-hidden
-              loading="lazy"
-              className="pointer-events-none absolute inset-0 h-full w-full object-cover opacity-20 grayscale transition-all duration-700 group-hover:scale-105 group-hover:opacity-50"
-            />
+            {p.image && (
+              <img
+                src={p.image}
+                alt={p.title}
+                aria-hidden
+                loading="lazy"
+                className="pointer-events-none absolute inset-0 h-full w-full object-cover opacity-20 grayscale transition-all duration-700 group-hover:scale-105 group-hover:opacity-50"
+              />
+            )}
             <div className="relative flex items-start justify-between gap-4">
               <h3 className="font-display text-2xl font-bold uppercase tracking-tight sm:text-3xl">
                 {p.title}
@@ -85,6 +64,17 @@ export function Projects() {
             </div>
           </motion.a>
         ))}
+      </div>
+
+      {/* "See More" Button to /projects */}
+      <div className="mt-10 flex justify-center sm:justify-end">
+        <Link
+          to="/projects"
+          className="group inline-flex items-center gap-3 border border-border bg-card/80 px-6 py-3.5 font-mono text-xs uppercase tracking-[0.2em] backdrop-blur transition-all duration-300 hover:border-terminal hover:text-terminal cursor-pointer select-none"
+        >
+          <span>See all projects [{String(projectsData.length).padStart(2, "0")}]</span>
+          <span className="transition-transform duration-300 group-hover:translate-x-1">→</span>
+        </Link>
       </div>
     </section>
   );

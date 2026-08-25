@@ -5,7 +5,7 @@ const ITEMS = [
   {
     year: "2023 — Present",
     role: "B.Sc. Computer Science Student",
-    org: "Ho Chi Minh City University of Technology (HCMUT)",
+    org: "Ho Chi Minh City University of Technology (HCMUT-VNUHCM)",
     details: [
       "4th Year Senior Academic Standing.",
       "Core focus: Software Engineering, System Architecture, Database Management, and AI Algorithms.",

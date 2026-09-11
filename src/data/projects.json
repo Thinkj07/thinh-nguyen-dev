@@ -36,7 +36,7 @@
     "stack": ["React", "Tailwind CSS", "Framer Motion", "JavaScript", "Vite"],
     "image": "/assets/img/portfolio.png",
     "github": "https://github.com/Thinkj07/thinh-nguyen-dev",
-    "demo": "",
+    "demo": "https://thinh-nguyen-dev.vercel.app",
     "span": "md:col-span-1"
   },
   {
@@ -46,17 +46,17 @@
     "stack": ["Python", "Pygame", "Scikit-learn", "NumPy"],
     "image": "/assets/img/connect-4.png",
     "github": "https://github.com/Thinkj07/Connect_4",
-    "demo": "",
+    "demo": "https://thinkj07.itch.io/connect-4",
     "span": "md:col-span-1"
   },
   {
-    "id": "sample-project",
-    "title": "Cloud Sentinel AI",
-    "blurb": "Distributed telemetry and log anomaly detection system with real-time alerting pipelines and microservices architecture.",
-    "stack": ["Python", "FastAPI", "Docker", "AWS", "PostgreSQL"],
-    "image": "/assets/img/project-1.png",
-    "github": "https://github.com/Thinkj07",
-    "demo": "",
+    "id": "intern-tracker",
+    "title": "Intern tracker tool",
+    "blurb": "A Next.js web app to browse, search, and filter internship companies from a university portal.",
+    "stack": ["Next.js", "TypeScript", "Tailwind CSS"],
+    "image": "/assets/img/intern.png",
+    "github": "https://github.com/Thinkj07/intern-tool",
+    "demo": "https://intern-tool.vercel.app/",
     "span": "md:col-span-1"
   }
 ]

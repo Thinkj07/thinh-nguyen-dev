@@ -145,7 +145,7 @@ export function TerminalBio() {
             {activeGame && GameComponent ? (
               <GameComponent onExit={handleExitGame} />
             ) : (
-              <div ref={bodyRef} className="h-full overflow-y-auto pr-1">
+              <div ref={bodyRef} className="h-full overflow-y-auto pr-2 terminal-scroll">
                 {lines.map((line, i) => (
                   <p key={i} className={line.kind === "in" ? "text-terminal" : "text-muted-foreground"}>
                     {line.kind === "in" ? `guest@thinhnguyen:~$ ${line.text}` : line.text}

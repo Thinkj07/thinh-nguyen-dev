@@ -4,17 +4,37 @@
     "title": "ITWORKS Platform",
     "blurb": "A full-stack job application platform with JWT authentication, role-based access control, and recruiter dashboards.",
     "stack": ["JavaScript", "Node.js", "Express", "React", "MongoDB"],
-    "image": "/assets/img/project-1.png",
+    "image": "/assets/img/itwork.png",
     "github": "https://github.com/Thinkj07/itwork",
     "demo": "",
     "span": "md:col-span-2 md:row-span-2"
+  },
+  {
+    "id": "aiot",
+    "title": "AIoT Smart Home",
+    "blurb": "A full-stack AIoT platform with async RESTful APIs, RBAC, and real-time device control.",
+    "stack": ["React", "Python", "FastAPT", "PostgreSQL", "OpenCV"],
+    "image": "/assets/img/smart-home.png",
+    "github": "https://github.com/hufzohel/AIOT-",
+    "demo": "",
+    "span": "md:col-span-1"
+  },
+  {
+    "id": "perfume",
+    "title": "Perfume E-Commerce",
+    "blurb": "A full-stack e-commerce system with JWT/RBAC security, dynamic multi-tier catalog filtering, and an Admin Dashboard.",
+    "stack": ["React", "Tailwind CSS", "TypeScript", "PostgreSQL", "AWS"],
+    "image": "/assets/img/perfume.png",
+    "github": "https://github.com/Thinkj07/perfume-web",
+    "demo": "",
+    "span": "md:col-span-1"
   },
   {
     "id": "portfolio",
     "title": "Personal Portfolio",
     "blurb": "Modern, responsive portfolio website with Canvas API animations, Framer Motion, Lenis smooth scroll, interactive terminal CLI, and theme switcher.",
     "stack": ["React", "Tailwind CSS", "Framer Motion", "JavaScript", "Vite"],
-    "image": "/assets/img/project-2.png",
+    "image": "/assets/img/portfolio.png",
     "github": "https://github.com/Thinkj07/thinh-nguyen-dev",
     "demo": "",
     "span": "md:col-span-1"
@@ -24,7 +44,7 @@
     "title": "Connect 4 AI Engine",
     "blurb": "Tactical board game engine with AI heuristic evaluation (MCTS & Minimax optimized by Neural Network).",
     "stack": ["Python", "Pygame", "Scikit-learn", "NumPy"],
-    "image": "/assets/img/project-3.png",
+    "image": "/assets/img/connect-4.png",
     "github": "https://github.com/Thinkj07/Connect_4",
     "demo": "",
     "span": "md:col-span-1"

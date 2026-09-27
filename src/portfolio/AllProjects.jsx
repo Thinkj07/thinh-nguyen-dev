@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useState } from "react";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 import { motion } from "motion/react";
 import { Link } from "react-router-dom";
 import { ThemeToggle } from "./ThemeToggle";
@@ -6,7 +7,16 @@ import { CustomCursor } from "./CustomCursor";
 import { SmoothScroll } from "./SmoothScroll";
 import projectsData from "../data/projects.json";
 
+const PROJECTS_PER_PAGE = 6;
+
 export function AllProjects() {
+  const [currentPage, setCurrentPage] = useState(1);
+  const totalPages = Math.ceil(projectsData.length / PROJECTS_PER_PAGE);
+  const paginatedProjects = projectsData.slice(
+    (currentPage - 1) * PROJECTS_PER_PAGE,
+    currentPage * PROJECTS_PER_PAGE,
+  );
+
   return (
     <div className="min-h-screen bg-background text-foreground selection:bg-terminal selection:text-background">
       <SmoothScroll />
@@ -49,7 +59,7 @@ export function AllProjects() {
 
         {/* Minimal Projects Grid - Image on Top, Text Below */}
         <div className="mt-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {projectsData.map((p, i) => (
+          {paginatedProjects.map((p, i) => (
             <motion.div
               key={p.id || p.title}
               initial={{ opacity: 0, y: 20 }}
@@ -131,6 +141,53 @@ export function AllProjects() {
             </motion.div>
           ))}
         </div>
+
+        {/* Pagination */}
+        {totalPages > 1 && (
+          <nav
+            aria-label="Project pages"
+            className="mt-10 flex items-center justify-center gap-2 font-mono text-xs"
+          >
+            <button
+              type="button"
+              onClick={() => setCurrentPage((page) => page - 1)}
+              disabled={currentPage === 1}
+              aria-label="Previous page"
+              className="border border-border px-3 py-2 text-foreground transition-colors hover:border-terminal hover:text-terminal disabled:cursor-not-allowed disabled:opacity-40 disabled:hover:border-border disabled:hover:text-foreground"
+            >
+              <ChevronLeft aria-hidden="true" size={16} strokeWidth={1.5} />
+            </button>
+
+            {Array.from({ length: totalPages }, (_, index) => index + 1).map(
+              (page) => (
+                <button
+                  key={page}
+                  type="button"
+                  onClick={() => setCurrentPage(page)}
+                  aria-label={`Go to page ${page}`}
+                  aria-current={currentPage === page ? "page" : undefined}
+                  className={`min-w-9 border px-3 py-2 transition-colors ${
+                    currentPage === page
+                      ? "border-terminal bg-terminal text-background"
+                      : "border-border text-foreground hover:border-terminal hover:text-terminal"
+                  }`}
+                >
+                  {page}
+                </button>
+              ),
+            )}
+
+            <button
+              type="button"
+              onClick={() => setCurrentPage((page) => page + 1)}
+              disabled={currentPage === totalPages}
+              aria-label="Next page"
+              className="border border-border px-3 py-2 text-foreground transition-colors hover:border-terminal hover:text-terminal disabled:cursor-not-allowed disabled:opacity-40 disabled:hover:border-border disabled:hover:text-foreground"
+            >
+              <ChevronRight aria-hidden="true" size={16} strokeWidth={1.5} />
+            </button>
+          </nav>
+        )}
 
         {/* Minimal Footer */}
         <div className="mt-16 border-t border-border pt-6 flex items-center justify-between font-mono text-xs text-muted-foreground">

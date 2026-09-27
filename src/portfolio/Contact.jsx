@@ -89,7 +89,7 @@ export function Contact() {
             { label: "GitHub", href: "https://github.com/Thinkj07/" },
             { label: "LinkedIn", href: "https://www.linkedin.com/in/thinkj07/" },
             { label: "Facebook", href: "https://www.facebook.com/thinhnguyen0707/" },
-            { label: "Resume (PDF)", href: "/assets/img/cv.pdf" },
+            { label: "Resume (PDF)", href: "/assets/doc/cv.pdf" },
           ].map((l) => (
             <a
               key={l.label}

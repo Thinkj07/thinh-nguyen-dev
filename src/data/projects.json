@@ -58,5 +58,15 @@
     "github": "https://github.com/Thinkj07/intern-tool",
     "demo": "https://intern-tool.vercel.app/",
     "span": "md:col-span-1"
+  },
+  {
+    "id": "vietnamese-food-image",
+    "title": "Vietnamese Food Images Recognition",
+    "blurb": "A machine learning model to recognize Vietnamese food images using PyTorch.",
+    "stack": ["Python", "PyTorch"],
+    "image": "/assets/img/vietnamese-food-image.png",
+    "github": "https://github.com/Thinkj07/vietnamese-food-image",
+    "demo": "",
+    "span": "md:col-span-1"
   }
 ]
